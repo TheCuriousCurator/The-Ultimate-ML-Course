@@ -1,5 +1,7 @@
 ## Super popular git commands
 
+git pull origin branch
+
 ### To create and switch to a new branch in Git:
 git checkout -b NEW_BRANCH_NAME
 
@@ -16,6 +18,6 @@ git status
 git commit -m "Add Message"
 
 ### push this new branch to a remote repository
-git push -u origin <branch>
+git push -u origin NEW_BRANCH_NAME
 
 ### Then you can create a pull request from github
