@@ -1,5 +1,16 @@
 ## Super popular git commands
 
+```
+git fetch origin     // origin is the remote name you are targeting
+git branch -a
+git branch
+git checkout -b test-remote-clone origin/test-remote-clone
+git add <{fileNames}>         // specify all file names that you need to commit
+git commit -m "add new file" // you can give relevant commit message here
+git push                    // Here we no need to specify the remote branch 
+                               name, because git automatically sets the local 
+                               branch to track the remote branch 
+```
 ### outputs the name of remote
 `git remote`
 
