@@ -1,17 +1,20 @@
 ## Super popular git commands
 
-# outputs the name of remote
+### outputs the name of remote
 git remote
 
 git pull origin branch
+
 git pull origin main
 
-# The pull command also has the prune option (--prune or -p) 
+### The pull command also has the prune option (--prune or -p) 
 git pull -p
 
 ### To create and switch to a new branch in Git:
 git checkout -b NEW_BRANCH_NAME
+
 git checkout -b \<my_new_branch\> \<remote\>/\<branch_name\>
+
 git checkout -b NEW_BRANCH_NAME origin/main
 
 ### To switch to a different branch
