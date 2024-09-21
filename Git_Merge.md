@@ -1,7 +1,7 @@
 Feature Branches
 Say you have Main branch at the Origin, with a history of Commits, A.
 
-![Main Branch](https://drive.google.com/drive/folders/1Kxjg5aHbUpjB_Svfi-OlKwwYwSpP0O2B "Main")
+![Main Branch](images/git/main.png "Main")
 
 
 You pull from Main, and create a new branch, FeatureA, such that you have commit history:
