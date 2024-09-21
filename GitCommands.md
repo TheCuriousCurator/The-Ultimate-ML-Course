@@ -36,3 +36,9 @@ git commit -m "Add Message"
 git push -u origin NEW_BRANCH_NAME
 
 ### Then you can create a pull request from github
+
+
+
+## More
+### if you are on master then merge the origin/main into master branch
+git merge origin/main
