@@ -40,7 +40,8 @@ e.g.
 
 ### Then you can create a pull request from github
 
-
+### delete a branch
+`git branch --delete <branchname>`
 
 ## More
 ### if you are on main then merge the origin/main into main branch
