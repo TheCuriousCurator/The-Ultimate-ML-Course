@@ -34,6 +34,14 @@ e.g.
 ### To switch to a different branch
 `git switch BRANCH_NAME`
 
+If foo does not exist and origin/foo exists, try to create foo from origin/foo and then switch to foo:
+
+```
+git switch -c foo origin/foo
+# or simply
+git switch foo
+```
+
 ### verify if you are working on that branch:
 `git branch`
 
