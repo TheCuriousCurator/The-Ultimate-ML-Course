@@ -15,7 +15,7 @@ e.g.
 ### To create and switch to a new branch in Git:
 `git checkout -b NEW_BRANCH_NAME`
 
-`git checkout -b \<my_new_branch\> \<remote\>/\<branch_name\>`
+`git checkout -b <my_new_branch> <remote>/<branch_name>`
 
 e.g. 
 `git checkout -b NEW_BRANCH_NAME origin/main`
