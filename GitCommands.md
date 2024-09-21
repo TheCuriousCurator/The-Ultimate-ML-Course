@@ -9,7 +9,7 @@ git add <{fileNames}>         // specify all file names that you need to commit
 git commit -m "add new file" // you can give relevant commit message here
 git push                    // Here we no need to specify the remote branch 
                                name, because git automatically sets the local 
-                               branch to track the remote branch
+                               branch to track the remote branch 
 ```
 ### outputs the name of remote
 `git remote`
