@@ -1,5 +1,5 @@
 # The Ultimate ML Course 
-<img src="images/TCC-logo.jpeg" width="150"/> 
+<img src="images/TCC-logos.jpeg" width="150"/> 
 
 ## by [The Curious Curator](https://thecuriouscurator.in/course/ultimate-machine-learning-course/)
 
