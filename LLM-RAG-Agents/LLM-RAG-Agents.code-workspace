@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"name": "LLM-RAG-Agents",
+			"path": "."
+		},
+		{
+			"name": "Langchain-main",
+			"path": "../../Downloads/Langchain-main"
+		}
+	],
+	"settings": {}
+}
