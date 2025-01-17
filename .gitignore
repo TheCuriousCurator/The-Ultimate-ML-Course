@@ -18,6 +18,7 @@ envVars.txt
 __pycache__
 npm-debug.log
 **/.mypy_cache/**
+**/data/**
 !yarn.lock
 coverage/
 cucumber-report.json
