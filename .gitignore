@@ -1,5 +1,6 @@
 .*
 *.csv
+*.gz
 .config*
 .DS_Store
 .huskyrc.json
@@ -79,7 +80,8 @@ wheels/
 *.egg 
 *.manifest 
 *.spec 
-
+data/
+data/*
 # Log files
 pip-log.txt
 pip-delete-this-directory.txt
