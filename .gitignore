@@ -1,6 +1,10 @@
 .*
 *.csv
 *.gz
+*.txt
+*.data
+*.npy
+*.png
 .config*
 .DS_Store
 .huskyrc.json
