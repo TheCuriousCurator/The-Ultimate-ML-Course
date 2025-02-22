@@ -1,7 +1,12 @@
 .*
 *.csv
 *.gz
+*.tar.gz
+tar.gz
+*.zip
 *.txt
+*.pth
+.pth
 *.data
 *.npy
 *.png
@@ -87,6 +92,8 @@ wheels/
 *.spec 
 data/
 data/*
+*/data/
+*/data/*
 # Log files
 pip-log.txt
 pip-delete-this-directory.txt
