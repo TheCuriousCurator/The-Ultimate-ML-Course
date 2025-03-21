@@ -65,3 +65,27 @@ git switch foo
 ## More
 ### if you are on main then merge the origin/main into main branch
 `git merge origin/main`
+
+## How to Revert to Last Commit?
+Reverting to the last commit in Git is an important skill for developers who need to undo changes and return their project to a previous state. This article will guide you through various approaches to revert to the last commit, detailing each step to ensure you can effectively manage your Git repository.
+
+Reverting to the last commit means discarding the changes made after the last commit and bringing your working directory back to the state it was in at that commit. This is useful when recent changes have introduced errors, and you need to return to a stable state. There are several ways to accomplish this in Git, each with its own use cases and benefits.
+
+Approaches to Revert to Last Commit in Git are mentioned below:
+
+### Using `git reset`
+`git reset` is a powerful command used to undo changes. It can modify the index, the working directory, and the commit history.
+
+## Check the commit history:
+git log --oneline
+### Identify the commit hash (e.g., `a1b2c3d`) you want to reset to.
+
+## Hard reset to the last/previous commit
+git reset --hard HEAD^
+git reset --hard a1b2c3d
+
+### Using `git revert`
+`git revert` creates a new commit that undoes the changes from a previous commit.
+
+## Revert the last commit
+git revert HEAD
