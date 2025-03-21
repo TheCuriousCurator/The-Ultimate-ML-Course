@@ -66,6 +66,25 @@ def train(cpu_num, args):
        sampler=train_sampler)
     model = ConvNet()
     optimizer = optim.Adadelta(model.parameters(), lr=0.5)
+    '''
+    Another addition in our code is the nn.parallel.DistributedDataParallel function, 
+    which is applied to the model object. This is perhaps the most important part of this code as
+    DistributedDataParallel is a critical component/API that facilitates the gradient descent
+    algorithm in a distributed fashion. The following happens under the hood:
+    - Each spawned process in the distributed universe gets its own model copy.
+    - Each model per process maintains its own optimizer and undergoes a local optimization
+    step in sync with the global iteration.
+    - At each distributed training iteration, individual losses and hence gradients are calculated 
+    in each process and these gradients are then averaged across processes.
+    - The averaged gradient is then universally back-propagated to each of the model copies,
+    which tunes their parameters.
+    - Because of the universal backpropagation step, all model parameters are the same at each iteration, 
+    and therefore are automatically synced.
+
+    DistributedDataParallel ensures that each Python process runs on an independent Python
+    interpreter, doing away with the GIL limitation that could be posed if multiple models were
+    instantiated in multiple threads under the same interpreter.
+    '''
     model = nn.parallel.DistributedDataParallel(model)
     model.train()
     for epoch in range(args.epochs):
