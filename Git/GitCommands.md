@@ -77,15 +77,15 @@ Approaches to Revert to Last Commit in Git are mentioned below:
 `git reset` is a powerful command used to undo changes. It can modify the index, the working directory, and the commit history.
 
 ## Check the commit history:
-git log --oneline
+`git log --oneline`
 ### Identify the commit hash (e.g., `a1b2c3d`) you want to reset to.
 
 ## Hard reset to the last/previous commit
-git reset --hard HEAD^
-git reset --hard a1b2c3d
+`git reset --hard HEAD^`
+`git reset --hard a1b2c3d`
 
 ### Using `git revert`
 `git revert` creates a new commit that undoes the changes from a previous commit.
 
 ## Revert the last commit
-git revert HEAD
+`git revert HEAD`
