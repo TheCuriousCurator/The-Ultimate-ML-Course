@@ -99,3 +99,7 @@ Approaches to Revert to Last Commit in Git are mentioned below:
 ### Reverting to last commit might fail
 - option 1: discard changes
 - option 2: `git stash` (move current changes to stash). Use `git stash pop` to get back those changes. 
+
+
+
+#### END ####
