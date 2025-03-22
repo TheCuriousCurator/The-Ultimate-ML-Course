@@ -1,6 +1,8 @@
 ## Super popular git commands
 `git init`
+
 `git config --global user.name "The Curious Curator"`
+
 `git config --global user.email "curious.curator.services@gmail.com"`
 
 
