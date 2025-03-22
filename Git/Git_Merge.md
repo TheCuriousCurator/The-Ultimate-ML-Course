@@ -75,4 +75,5 @@ Perhaps a stash and pull is easier?
 
 Stash your **FeatureA**, Fetch/Pull an up to date local copy of **Main** from Origin, and either create a new branch and apply your stash. (Or merge your new **Main** branch into your branch, and apply your stash. If doing the latter, squash to avoid a merge in the commit history.) Then you can push to Origin / create pull request.
 
+
 Source: https://stackoverflow.com/a/76709094
