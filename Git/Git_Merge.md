@@ -3,7 +3,7 @@ If you follow this it will explain everything you want to know about squash, mer
 ## Feature Branches
 Say you have **Main** branch at the Origin, with a history of Commits, A.
 
-![Main Branch](images/git/main.png "Main")
+![Main Branch](https://raw.githubusercontent.com/TheCuriousCurator/The-Ultimate-ML-Course/main/images/git/main.png "Main")
 
 You pull from **Main**, and create a new branch, **FeatureA**, such that you have commit history:
 
