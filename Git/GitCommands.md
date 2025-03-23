@@ -99,3 +99,15 @@ Approaches to Revert to Last Commit in Git are mentioned below:
 ### Reverting to last commit might fail
 - option 1: discard changes
 - option 2: `git stash` (move current changes to stash). Use `git stash pop` to get back those changes. 
+
+## Tagging a commit with a name
+
+`git checkout  a1b2c3d`
+
+`git tag v0.2.3`
+
+Lets say now current master branch is a major release. We can communicate this to the community by using tag v1.0.0 by using the following commands.
+
+`git checkout main`
+
+`git tag v1.0.0`
