@@ -1,3 +1,6 @@
+
+![Client-Server](https://raw.githubusercontent.com/TheCuriousCurator/The-Ultimate-ML-Course/main/images/git/git-client-server.png "Client-Server")
+
 ## Super popular git commands
 `git init`
 
