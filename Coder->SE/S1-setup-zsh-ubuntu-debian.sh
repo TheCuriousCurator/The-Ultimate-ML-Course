@@ -20,14 +20,24 @@ git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-$HOME/.
  
 # plugin: zsh-syntax-highlighting
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
- 
+
+# plugin: fzf for fuzzy match for auto-completion
+git clone --depth 1 https://github.com/unixorn/fzf-zsh-plugin.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/fzf-zsh-plugin
+
+# plugin: fzf-tab for zsh default completion
+git clone https://github.com/Aloxaf/fzf-tab ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/fzf-tab
+
 # add these two plugins and enable some of the default ones
-sed -i 's/\(^plugins=([^)]*\)/\1 python pip pyenv virtualenv web-search zsh-autosuggestions zsh-syntax-highlighting/' "$HOME/.zshrc"
+sed -i 's/\(^plugins=([^)]*\)/\1 git web-search python pyenv virtualenv pip fzf-tab zsh-autosuggestions zsh-syntax-highlighting fzf-zsh-plugin/' "$HOME/.zshrc"
  
 # set the ZSH_THEME to "bira"
 sed -i 's/_THEME=\".*\"/_THEME=\"bira\"/g' "$HOME/.zshrc"
 
+echo "source ~/.oh-my-zsh/custom/plugins/fzf-zsh-plugin/fzf-zsh-plugin.plugin.zsh" >> ~/.zshrc
+
+echo "source ~/.oh-my-zsh/custom/plugins/fzf-tab/fzf-tab.plugin.zsh" >> ~/.zshrc
 
 conda init zsh
 zsh
 conda activate ~/conda_env/pytorch_GPU_3.9/
+
