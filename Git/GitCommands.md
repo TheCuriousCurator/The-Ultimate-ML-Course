@@ -1,3 +1,6 @@
+#### [Intersting Websites to play with git commands and branches](https://git-school.github.io/visualizing-git/#free). 
+#### [Learn Git with Puzzles](https://learngitbranching.js.org/)
+
 ## Super popular git commands
 `git init`
 
@@ -19,6 +22,9 @@ git push                    // Here we no need to specify the remote branch
 ```
 ### outputs the name of remote
 `git remote`
+
+### set name origin to git repo
+`git remote add origin GIT-URL`
 
 ### Pull a remote branch to current branch
 `git pull origin BRANCH`
