@@ -3,13 +3,13 @@ If you follow this it will explain everything you want to know about squash, mer
 ## Feature Branches
 Say you have **Main** branch at the Origin, with a history of Commits, A.
 
-![Main Branch](images/git/main.png "Main")
+![Main Branch](https://raw.githubusercontent.com/TheCuriousCurator/The-Ultimate-ML-Course/main/images/git/main.png "Main")
 
 You pull from **Main**, and create a new branch, **FeatureA**, such that you have commit history:
 
 A, F1, F2, F3 (three commits on **FeatureA** branch)
 
-![Feature Branch](images/git/feature_branch.png "Feature Branch")
+![Feature Branch](https://raw.githubusercontent.com/TheCuriousCurator/The-Ultimate-ML-Course/main/images/git/feature_branch.png "Feature Branch")
 
 You want to push you changes into Origin and merge into **Main**. Since **Main** on Origin hasn’t changed you are also able to Fast Forward.
 
@@ -18,18 +18,18 @@ You want to push you changes into Origin and merge into **Main**. Since **Main**
 Apply all the commit history of **FeatureA** branch on top of **Main’s** commit history.
 
 
-![Merge with Fast Forward](images/git/merge_with_fast_forward.png "Merge with Fast Forward")
+![Merge with Fast Forward](https://raw.githubusercontent.com/TheCuriousCurator/The-Ultimate-ML-Course/main/images/git/merge_with_fast_forward.png "Merge with Fast Forward")
 
 ## Merge with Squash
 An option available whenever your branch has multiple commits is to squash. Squashing combines the history of **FeatureA** branch into a single commit when merging with **Main**.
 
-![Merge with Squash](images/git/merge_with_squash.png "Merge with Squash")
+![Merge with Squash](https://raw.githubusercontent.com/TheCuriousCurator/The-Ultimate-ML-Course/main/images/git/merge_with_squash.png "Merge with Squash")
 
 _Fast forward isn’t possible if there have been other changes on Main._
 
 If you made changes to the **FeatureA** branch, meanwhile others had pushed into **Main**, such that the Origin history of Commits is now: A, B, C
 
-![Main and Feature branch with multiple commiters](images/git/main_multiple_commiters.png "Main and Feature branch with multiple commiters")
+![Main and Feature branch with multiple commiters](https://raw.githubusercontent.com/TheCuriousCurator/The-Ultimate-ML-Course/main/images/git/main_multiple_commiters.png "Main and Feature branch with multiple commiters")
 
 You want to push you changes into **Main** branch on Origin, and you have a few different options:
 
@@ -41,7 +41,7 @@ You want to push you changes into **Main** branch on Origin, and you have a few 
 
 If you were to fetch a local copy of Origin’s **Main** branch and merge it into your local **FeatureA** branch, you would create a commit for that merge, M. You local history on **FeatureA** would be: A, F1, F2, F3, M, where M is the merge commit.
 
-![merge without fast forward](images/git/merge_without_fast_forward.png "merge without fast forward")
+![merge without fast forward](https://raw.githubusercontent.com/TheCuriousCurator/The-Ultimate-ML-Course/main/images/git/merge_without_fast_forward.png "merge without fast forward")
 
 You could then merge to **Main** (squashing if you wanted). Note that if you don’t squash, you will introduce a Merge commit into the **Main** commit history:
 
@@ -49,7 +49,7 @@ A, B, C, F1, F2, M.
 
 You could avoid this by squashing your branch when merging to **Main**, as described above in the Squash section, resulting in: A B C F, like so:
 
-![merge to main (with multiple commiters) with squash](images/git/merge_multiple_commiters_with_squash.png "merge to main (with multiple commiters) with squash")
+![merge to main (with multiple commiters) with squash](https://raw.githubusercontent.com/TheCuriousCurator/The-Ultimate-ML-Course/main/images/git/merge_multiple_commiters_with_squash.png "merge to main (with multiple commiters) with squash")
 
 ## Rebase
 
@@ -57,11 +57,11 @@ Rebase is another option to avoid introducing a merge commit into the history. I
 
 A, B, C, F1, F2, F3
 
-![rebase](images/git/rebase.png "rebase")
+![rebase](https://raw.githubusercontent.com/TheCuriousCurator/The-Ultimate-ML-Course/main/images/git/rebase.png "rebase")
 
 A, B, C, F (with squash)
 
-![rebase with squash](images/git/rebase.png "rebase with squash")
+![rebase with squash](https://raw.githubusercontent.com/TheCuriousCurator/The-Ultimate-ML-Course/main/images/git/rebase.png "rebase with squash")
 
 _Note, there is no Merge commit, M_
 
