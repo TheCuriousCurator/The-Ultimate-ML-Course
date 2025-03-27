@@ -1,3 +1,5 @@
+#### [Intersting Websites to play with git commands and branches](https://git-school.github.io/visualizing-git/#free). 
+#### [Learn Git with Puzzles](https://learngitbranching.js.org/)
 
 ![Client-Server](https://raw.githubusercontent.com/TheCuriousCurator/The-Ultimate-ML-Course/main/images/git/git-client-server.png "Client-Server")
 source: https://wiki.hpc.tulane.edu/trac/wiki/Workshops/IntroToHpc2015/git
@@ -23,6 +25,9 @@ git push                    // Here we no need to specify the remote branch
 ```
 ### outputs the name of remote
 `git remote`
+
+### set name origin to git repo
+`git remote add origin GIT-URL`
 
 ### Pull a remote branch to current branch
 `git pull origin BRANCH`
