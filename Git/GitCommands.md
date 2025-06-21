@@ -26,6 +26,9 @@ git push                    // Here we no need to specify the remote branch
 ### outputs the name of remote
 `git remote`
 
+### show url for origin
+`git remote show origin`
+
 ### set name origin to git repo
 `git remote add origin GIT-URL`
 
