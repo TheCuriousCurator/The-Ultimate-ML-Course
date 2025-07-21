@@ -1,0 +1,326 @@
+.
+├── docs
+│   ├── install-recommended-extensions.png
+│   ├── Linting and Formatting Guide.md
+│   ├── linting.excalidraw
+│   └── Project Setup.md
+├── domains
+│   ├── advertising
+│   │   └── pocs
+│   │       ├── ad-optimization
+│   │       │   ├── pyproject.toml
+│   │       │   ├── README.md
+│   │       │   ├── src
+│   │       │   │   ├── audience_targeting_flow.py
+│   │       │   │   ├── bid_optimization_flow.py
+│   │       │   │   ├── configs
+│   │       │   │   │   └── default.yaml
+│   │       │   │   ├── creative_performance_analysis_flow.py
+│   │       │   │   ├── helpers
+│   │       │   │   │   ├── __init__.py
+│   │       │   │   │   └── hi.py
+│   │       │   │   └── sql
+│   │       │   │       └── sample.sql
+│   │       │   └── tests
+│   │       │       ├── conftest.py
+│   │       │       ├── fixtures
+│   │       │       │   ├── __init__.py
+│   │       │       │   └── general_fixtures.py
+│   │       │       └── unit_tests
+│   │       │           ├── __init__.py
+│   │       │           └── test__sample.py
+│   │       └── programmatic-advertising
+│   │           ├── pyproject.toml
+│   │           ├── README.md
+│   │           ├── src
+│   │           │   ├── configs
+│   │           │   │   └── default.yaml
+│   │           │   ├── fraud_detection_flow.py
+│   │           │   ├── helpers
+│   │           │   │   └── __init__.py
+│   │           │   ├── lookalike_modeling_flow.py
+│   │           │   ├── real_time_bidding_flow.py
+│   │           │   └── sql
+│   │           │       └── sample.sql
+│   │           └── tests
+│   │               ├── conftest.py
+│   │               ├── fixtures
+│   │               │   ├── __init__.py
+│   │               │   └── general_fixtures.py
+│   │               └── unit_tests
+│   │                   ├── __init__.py
+│   │                   └── test__sample.py
+│   ├── content
+│   │   └── pocs
+│   │       ├── content-optimization
+│   │       │   ├── pyproject.toml
+│   │       │   ├── README.md
+│   │       │   ├── src
+│   │       │   │   ├── configs
+│   │       │   │   │   └── default.yaml
+│   │       │   │   ├── content_performance_analysis_flow.py
+│   │       │   │   ├── content_recommendation_engine_flow.py
+│   │       │   │   ├── helpers
+│   │       │   │   │   └── __init__.py
+│   │       │   │   ├── sql
+│   │       │   │   │   └── sample.sql
+│   │       │   │   └── topic_modeling_flow.py
+│   │       │   └── tests
+│   │       │       ├── conftest.py
+│   │       │       ├── fixtures
+│   │       │       │   ├── __init__.py
+│   │       │       │   └── general_fixtures.py
+│   │       │       └── unit_tests
+│   │       │           ├── __init__.py
+│   │       │           └── test__sample.py
+│   │       └── social-media-analytics
+│   │           ├── pyproject.toml
+│   │           ├── README.md
+│   │           ├── src
+│   │           │   ├── configs
+│   │           │   │   └── default.yaml
+│   │           │   ├── engagement_metrics_flow.py
+│   │           │   ├── helpers
+│   │           │   │   └── __init__.py
+│   │           │   ├── sentiment_analysis_flow.py
+│   │           │   ├── sql
+│   │           │   │   └── sample.sql
+│   │           │   └── viral_content_predictor_flow.py
+│   │           └── tests
+│   │               ├── conftest.py
+│   │               ├── fixtures
+│   │               │   ├── __init__.py
+│   │               │   └── general_fixtures.py
+│   │               └── unit_tests
+│   │                   ├── __init__.py
+│   │                   └── test__sample.py
+│   ├── demand-generation
+│   │   └── pocs
+│   │       ├── lead-scoring
+│   │       │   ├── pyproject.toml
+│   │       │   ├── README.md
+│   │       │   ├── src
+│   │       │   │   ├── configs
+│   │       │   │   │   └── default.yaml
+│   │       │   │   ├── conversion_probability_flow.py
+│   │       │   │   ├── helpers
+│   │       │   │   │   └── __init__.py
+│   │       │   │   ├── lead_qualification_pipeline_flow.py
+│   │       │   │   ├── prospect_scoring_model_flow.py
+│   │       │   │   └── sql
+│   │       │   │       └── sample.sql
+│   │       │   └── tests
+│   │       │       ├── conftest.py
+│   │       │       ├── fixtures
+│   │       │       │   ├── __init__.py
+│   │       │       │   └── general_fixtures.py
+│   │       │       └── unit_tests
+│   │       │           ├── __init__.py
+│   │       │           └── test__sample.py
+│   │       └── marketing-attribution
+│   │           ├── pyproject.toml
+│   │           ├── README.md
+│   │           ├── src
+│   │           │   ├── campaign_roi_analysis_flow.py
+│   │           │   ├── channel_effectiveness_flow.py
+│   │           │   ├── configs
+│   │           │   │   └── default.yaml
+│   │           │   ├── helpers
+│   │           │   │   └── __init__.py
+│   │           │   ├── multi_touch_attribution_flow.py
+│   │           │   └── sql
+│   │           │       └── sample.sql
+│   │           └── tests
+│   │               ├── conftest.py
+│   │               ├── fixtures
+│   │               │   ├── __init__.py
+│   │               │   └── general_fixtures.py
+│   │               └── unit_tests
+│   │                   ├── __init__.py
+│   │                   └── test__sample.py
+│   ├── forecasting
+│   │   └── pocs
+│   │       ├── financial-modeling
+│   │       │   ├── pyproject.toml
+│   │       │   ├── README.md
+│   │       │   ├── src
+│   │       │   │   ├── cash_flow_forecasting_flow.py
+│   │       │   │   ├── configs
+│   │       │   │   │   └── default.yaml
+│   │       │   │   ├── helpers
+│   │       │   │   │   └── __init__.py
+│   │       │   │   ├── market_volatility_prediction_flow.py
+│   │       │   │   ├── revenue_projection_flow.py
+│   │       │   │   └── sql
+│   │       │   │       └── sample.sql
+│   │       │   └── tests
+│   │       │       ├── conftest.py
+│   │       │       ├── fixtures
+│   │       │       │   ├── __init__.py
+│   │       │       │   └── general_fixtures.py
+│   │       │       └── unit_tests
+│   │       │           ├── __init__.py
+│   │       │           └── test__sample.py
+│   │       └── sales-forecasting
+│   │           ├── pyproject.toml
+│   │           ├── README.md
+│   │           ├── src
+│   │           │   ├── configs
+│   │           │   │   └── default.yaml
+│   │           │   ├── helpers
+│   │           │   │   └── __init__.py
+│   │           │   ├── multi_horizon_forecasting_flow.py
+│   │           │   ├── seasonal_demand_prediction_flow.py
+│   │           │   ├── sql
+│   │           │   │   └── sample.sql
+│   │           │   └── time_series_forecasting_flow.py
+│   │           └── tests
+│   │               ├── conftest.py
+│   │               ├── fixtures
+│   │               │   ├── __init__.py
+│   │               │   └── general_fixtures.py
+│   │               └── unit_tests
+│   │                   ├── __init__.py
+│   │                   └── test__sample.py
+│   ├── market-intelligence
+│   │   └── pocs
+│   │       ├── competitive-analysis
+│   │       │   ├── pyproject.toml
+│   │       │   ├── README.md
+│   │       │   ├── src
+│   │       │   │   ├── competitor_pricing_analysis_flow.py
+│   │       │   │   ├── configs
+│   │       │   │   │   └── default.yaml
+│   │       │   │   ├── helpers
+│   │       │   │   │   └── __init__.py
+│   │       │   │   ├── market_share_tracking_flow.py
+│   │       │   │   ├── product_gap_analysis_flow.py
+│   │       │   │   └── sql
+│   │       │   │       └── sample.sql
+│   │       │   └── tests
+│   │       │       ├── conftest.py
+│   │       │       ├── fixtures
+│   │       │       │   ├── __init__.py
+│   │       │       │   └── general_fixtures.py
+│   │       │       └── unit_tests
+│   │       │           ├── __init__.py
+│   │       │           └── test__sample.py
+│   │       └── customer-insights
+│   │           ├── pyproject.toml
+│   │           ├── README.md
+│   │           ├── src
+│   │           │   ├── churn_prediction_flow.py
+│   │           │   ├── configs
+│   │           │   │   └── default.yaml
+│   │           │   ├── customer_segmentation_flow.py
+│   │           │   ├── helpers
+│   │           │   │   └── __init__.py
+│   │           │   ├── lifetime_value_modeling_flow.py
+│   │           │   └── sql
+│   │           │       └── sample.sql
+│   │           └── tests
+│   │               ├── conftest.py
+│   │               ├── fixtures
+│   │               │   ├── __init__.py
+│   │               │   └── general_fixtures.py
+│   │               └── unit_tests
+│   │                   ├── __init__.py
+│   │                   └── test__sample.py
+│   ├── operations
+│   │   └── pocs
+│   │       ├── operational-efficiency
+│   │       │   ├── pyproject.toml
+│   │       │   ├── README.md
+│   │       │   ├── src
+│   │       │   │   ├── configs
+│   │       │   │   │   └── default.yaml
+│   │       │   │   ├── helpers
+│   │       │   │   │   └── __init__.py
+│   │       │   │   ├── process_mining_flow.py
+│   │       │   │   ├── quality_control_monitoring_flow.py
+│   │       │   │   ├── resource_allocation_flow.py
+│   │       │   │   └── sql
+│   │       │   │       └── sample.sql
+│   │       │   └── tests
+│   │       │       ├── conftest.py
+│   │       │       ├── fixtures
+│   │       │       │   ├── __init__.py
+│   │       │       │   └── general_fixtures.py
+│   │       │       └── unit_tests
+│   │       │           ├── __init__.py
+│   │       │           └── test__sample.py
+│   │       └── supply-chain-optimization
+│   │           ├── pyproject.toml
+│   │           ├── README.md
+│   │           ├── src
+│   │           │   ├── configs
+│   │           │   │   └── default.yaml
+│   │           │   ├── demand_planning_flow.py
+│   │           │   ├── helpers
+│   │           │   │   └── __init__.py
+│   │           │   ├── inventory_optimization_flow.py
+│   │           │   ├── sql
+│   │           │   │   └── sample.sql
+│   │           │   └── supplier_risk_assessment_flow.py
+│   │           └── tests
+│   │               ├── conftest.py
+│   │               ├── fixtures
+│   │               │   ├── __init__.py
+│   │               │   └── general_fixtures.py
+│   │               └── unit_tests
+│   │                   ├── __init__.py
+│   │                   └── test__sample.py
+│   └── reference
+│       ├── example-project
+│       │   ├── pyproject.toml
+│       │   ├── README.md
+│       │   ├── src
+│       │   │   ├── amit_made_a_flow.py
+│       │   │   ├── configs
+│       │   │   │   └── default.yaml
+│       │   │   ├── helpers
+│       │   │   │   └── __init__.py
+│       │   │   ├── my_flow.py
+│       │   │   ├── notebooks
+│       │   │   │   └── dev.ipynb
+│       │   │   ├── other_flow.py
+│       │   │   ├── some_flow.py
+│       │   │   └── sql
+│       │   │       └── sample.sql
+│       │   ├── tests
+│       │   │   ├── conftest.py
+│       │   │   ├── fixtures
+│       │   │   │   ├── __init__.py
+│       │   │   │   └── general_fixtures.py
+│       │   │   └── unit_tests
+│       │   │       ├── __init__.py
+│       │   │       └── test__sample.py
+│       │   └── uv.lock
+│       └── pocs
+│           └── data-pipeline-patterns
+│               ├── pyproject.toml
+│               ├── README.md
+│               ├── src
+│               │   ├── batch_aggregator_flow.py
+│               │   ├── configs
+│               │   │   └── default.yaml
+│               │   ├── etl_pipeline_flow.py
+│               │   ├── helpers
+│               │   │   └── __init__.py
+│               │   ├── sql
+│               │   │   └── sample.sql
+│               │   └── streaming_processor_flow.py
+│               └── tests
+│                   ├── conftest.py
+│                   ├── fixtures
+│                   │   ├── __init__.py
+│                   │   └── general_fixtures.py
+│                   └── unit_tests
+│                       ├── __init__.py
+│                       └── test__sample.py
+├── monorepo-structure.txt
+├── pyproject.toml
+├── README.md
+└── run
+
+130 directories, 194 files
