@@ -1,0 +1,135 @@
+---
+# PersistentVolumeClaim for MLflow metadata storage
+# Uses gp3 StorageClass (created automatically by deployment script)
+# gp3 is more cost-effective and performant than default gp2
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: mlflow-pvc
+  namespace: mlflow-kserve-test
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 20Gi
+  storageClassName: gp3  # Auto-created if not exists
+---
+# MLflow Server Deployment for EKS
+# Key features:
+# - Uses IRSA (kserve-sa) for S3 access without credentials
+# - Automatically installs boto3 for S3 artifact storage
+# - Persists metadata to PVC (gp3 storage)
+# - Configured for EKS environment
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mlflow-server
+  namespace: mlflow-kserve-test
+  labels:
+    app: mlflow-server
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mlflow-server
+  template:
+    metadata:
+      labels:
+        app: mlflow-server
+    spec:
+      serviceAccountName: kserve-sa  # Has S3 access via IRSA
+      containers:
+      - name: mlflow
+        image: ghcr.io/mlflow/mlflow:v2.10.2
+        # Note: The official MLflow image doesn't include boto3 by default
+        # We install it on startup to enable S3 artifact storage
+        # This adds ~30-40 seconds to container startup time
+        command: ["/bin/sh", "-c"]
+        args:
+          - |
+            pip install --upgrade boto3 awscli mlflow && \
+            mlflow server \
+              --host=0.0.0.0 \
+              --port=5000 \
+              --default-artifact-root=s3://REPLACE_WITH_YOUR_BUCKET_NAME/artifacts \
+              --backend-store-uri=/mlflow/mlflow.db \
+              --serve-artifacts  --allowed-hosts "*"
+        ports:
+        - containerPort: 5000
+          name: http
+        env:
+        - name: AWS_REGION
+          value: "us-east-1"
+        - name: AWS_DEFAULT_REGION
+          value: "us-east-1"
+        volumeMounts:
+        - name: mlflow-data
+          mountPath: /mlflow
+        resources:
+          requests:
+            memory: "512Mi"
+            cpu: "250m"
+          limits:
+            memory: "2Gi"
+            cpu: "1000m"
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 5000
+          initialDelaySeconds: 30
+          periodSeconds: 10
+        readinessProbe:
+          httpGet:
+            path: /health
+            port: 5000
+          initialDelaySeconds: 20
+          periodSeconds: 5
+      volumes:
+      - name: mlflow-data
+        persistentVolumeClaim:
+          claimName: mlflow-pvc
+---
+# MLflow LoadBalancer Service (External Access)
+# Configured as internet-facing for public access
+# Uses NLB (Network Load Balancer) for better performance
+# Default would be internal LoadBalancer (private subnet only)
+apiVersion: v1
+kind: Service
+metadata:
+  name: mlflow-server
+  namespace: mlflow-kserve-test
+  labels:
+    app: mlflow-server
+  annotations:
+    # Makes the LoadBalancer publicly accessible
+    service.beta.kubernetes.io/aws-load-balancer-scheme: "internet-facing"
+    # Use NLB instead of Classic Load Balancer
+    service.beta.kubernetes.io/aws-load-balancer-type: "nlb"
+spec:
+  type: LoadBalancer
+  selector:
+    app: mlflow-server
+  ports:
+  - port: 5000
+    targetPort: 5000
+    protocol: TCP
+    name: http
+---
+# Optional: Internal service for within-cluster access
+apiVersion: v1
+kind: Service
+metadata:
+  name: mlflow-server-internal
+  namespace: mlflow-kserve-test
+  labels:
+    app: mlflow-server
+spec:
+  type: ClusterIP
+  selector:
+    app: mlflow-server
+  ports:
+  - port: 5000
+    targetPort: 5000
+    protocol: TCP
+    name: http
