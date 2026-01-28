@@ -1,0 +1,31 @@
+# Kourier LoadBalancer Service - Internet-Facing Configuration
+# This replaces the default internal LoadBalancer with a public one
+# Required for external access to KServe InferenceServices
+apiVersion: v1
+kind: Service
+metadata:
+  name: kourier
+  namespace: kourier-system
+  labels:
+    app.kubernetes.io/component: net-kourier
+    app.kubernetes.io/name: knative-serving
+    app.kubernetes.io/version: "1.15.0"
+    networking.knative.dev/ingress-provider: kourier
+  annotations:
+    # Make the LoadBalancer publicly accessible
+    service.beta.kubernetes.io/aws-load-balancer-scheme: "internet-facing"
+    # Use NLB for better performance
+    service.beta.kubernetes.io/aws-load-balancer-type: "nlb"
+spec:
+  type: LoadBalancer
+  selector:
+    app: 3scale-kourier-gateway
+  ports:
+    - name: http2
+      port: 80
+      protocol: TCP
+      targetPort: 8080
+    - name: https
+      port: 443
+      protocol: TCP
+      targetPort: 8443

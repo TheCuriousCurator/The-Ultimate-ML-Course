@@ -1,0 +1,39 @@
+apiVersion: "serving.kserve.io/v1beta1"
+kind: "InferenceService"
+metadata:
+  name: "mlflow-wine-classifier"
+  namespace: "mlflow-kserve-test"
+  annotations:
+    # External access annotation for KServe on EKS
+    networking.knative.dev/ingress-class: "kourier.ingress.networking.knative.dev"
+    # Enable autoscaling
+    autoscaling.knative.dev/minScale: "1"
+    autoscaling.knative.dev/maxScale: "3"
+    autoscaling.knative.dev/target: "10"
+spec:
+  predictor:
+    # Use the service account with S3 access (created by 4-setup-s3-mlflow.sh)
+    serviceAccountName: kserve-sa
+    containers:
+      - name: "mlflow-wine-classifier"
+        image: "dksahuji/wine-quality-elasticnet-base:1"
+        ports:
+          - containerPort: 8080
+            protocol: TCP
+        # Removed PROTOCOL=v2 to use native MLFlow /invocations endpoint
+        # env:
+        #   - name: PROTOCOL
+        #     value: "v2"
+        # Add environment variables for AWS S3 access if models are stored in S3
+        # env:
+        #   - name: AWS_REGION
+        #     value: "us-east-1"
+        #   - name: AWS_DEFAULT_REGION
+        #     value: "us-east-1"
+        resources:
+          requests:
+            memory: "2Gi"
+            cpu: "400m"
+          limits:
+            memory: "4Gi"
+            cpu: "600m"

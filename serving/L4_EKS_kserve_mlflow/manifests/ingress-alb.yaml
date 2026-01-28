@@ -1,0 +1,56 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: kserve-ingress
+  namespace: mlflow-kserve-test
+  annotations:
+    # ALB specific annotations
+    kubernetes.io/ingress.class: alb
+    alb.ingress.kubernetes.io/scheme: internet-facing
+    alb.ingress.kubernetes.io/target-type: ip
+    alb.ingress.kubernetes.io/healthcheck-path: /
+    alb.ingress.kubernetes.io/healthcheck-protocol: HTTP
+    alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}]'
+    # For HTTPS, uncomment below and provide certificate ARN
+    # alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}, {"HTTPS": 443}]'
+    # alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:us-east-1:XXXXXXXXXXXX:certificate/XXXXXX
+    # alb.ingress.kubernetes.io/ssl-redirect: '443'
+spec:
+  rules:
+    - http:
+        paths:
+          - path: /v1/models/mlflow-wine-classifier
+            pathType: Prefix
+            backend:
+              service:
+                name: mlflow-wine-classifier-predictor-default
+                port:
+                  number: 80
+          - path: /v2/models/mlflow-wine-classifier
+            pathType: Prefix
+            backend:
+              service:
+                name: mlflow-wine-classifier-predictor-default
+                port:
+                  number: 80
+---
+# Optional: If you want to expose the KServe ingress gateway directly
+apiVersion: v1
+kind: Service
+metadata:
+  name: istio-ingressgateway-nlb
+  namespace: istio-system
+  annotations:
+    service.beta.kubernetes.io/aws-load-balancer-type: "nlb"
+    service.beta.kubernetes.io/aws-load-balancer-scheme: "internet-facing"
+spec:
+  type: LoadBalancer
+  selector:
+    app: istio-ingressgateway
+  ports:
+    - name: http
+      port: 80
+      targetPort: 8080
+    - name: https
+      port: 443
+      targetPort: 8443

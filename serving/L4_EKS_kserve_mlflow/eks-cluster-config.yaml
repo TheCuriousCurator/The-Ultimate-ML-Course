@@ -1,0 +1,68 @@
+apiVersion: eksctl.io/v1alpha5
+kind: ClusterConfig
+
+metadata:
+  name: kserve-mlflow-cluster
+  region: us-east-1
+  version: "1.31"
+
+# Enable OIDC provider for IRSA (IAM Roles for Service Accounts)
+iam:
+  withOIDC: true
+
+# Managed node groups
+managedNodeGroups:
+  - name: kserve-nodegroup
+    instanceType: m5.xlarge
+    minSize: 2
+    maxSize: 4
+    desiredCapacity: 3
+    volumeSize: 100
+    volumeType: gp3
+    privateNetworking: false
+    ssh:
+      allow: false
+    labels:
+      role: kserve-worker
+      workload: ml-inference
+    tags:
+      nodegroup-role: kserve-worker
+      k8s.io/cluster-autoscaler/enabled: "true"
+      k8s.io/cluster-autoscaler/kserve-mlflow-cluster: "owned"
+    iam:
+      withAddonPolicies:
+        imageBuilder: true
+        autoScaler: true
+        externalDNS: true
+        certManager: true
+        ebs: true
+        efs: true
+        albIngress: true
+
+# Add-ons
+addons:
+  - name: vpc-cni
+    version: latest
+  - name: coredns
+    version: latest
+  - name: kube-proxy
+    version: latest
+  - name: aws-ebs-csi-driver
+    version: latest
+    wellKnownPolicies:
+      ebsCSIController: true
+
+# VPC configuration
+vpc:
+  cidr: 10.0.0.0/16
+  nat:
+    gateway: Single
+  clusterEndpoints:
+    publicAccess: true
+    privateAccess: true
+
+# CloudWatch logging
+cloudWatch:
+  clusterLogging:
+    enableTypes: ["api", "audit", "authenticator", "controllerManager", "scheduler"]
+    logRetentionInDays: 7
