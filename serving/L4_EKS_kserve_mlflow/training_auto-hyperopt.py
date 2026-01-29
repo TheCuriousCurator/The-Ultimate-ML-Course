@@ -1,3 +1,6 @@
+# https://mlflow.org/docs/latest/ml/deployment/deploy-model-to-kubernetes/tutorial/
+# https://kserve.github.io/website/docs/getting-started/predictive-first-isvc
+
 from dotenv import load_dotenv
 
 # Load environment variables from .env file
