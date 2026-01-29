@@ -1,0 +1,9 @@
+{
+    "name": "mlflow",
+    "implementation": "mlserver_mlflow.MLflowRuntime",
+    "parameters": {
+      "uri": "models:/sk-learn-random-forest-reg-model/4"
+    },
+    "max_batch_size": 128,
+    "max_batch_time": 0.1
+  }

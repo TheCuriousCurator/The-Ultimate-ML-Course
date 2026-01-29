@@ -153,7 +153,8 @@ Your service runs in AWS cloud and is accessed via AWS Load Balancer, **not loca
 # Get the load balancer endpoint
 INGRESS_HOST=$(kubectl get svc -n knative-serving kourier -o jsonpath='{.status.loadBalancer.ingress[0].hostname}')
 HOSTNAME=$(kubectl get inferenceservice mlflow-wine-classifier -n mlflow-kserve-test -o jsonpath='{.status.url}' | sed 's|http://||')
-
+# export INGRESS_HOST=$(kubectl -n istio-system get service istio-ingressgateway -o jsonpath='{.status.loadBalancer.ingress[0].ip}')
+# export INGRESS_PORT=$(kubectl -n istio-system get service istio-ingressgateway -o jsonpath='{.spec.ports[?(@.name=="http2")].port}')
 # Test
 curl -H "Host: $HOSTNAME" \
   -H "Content-Type: application/json" \
